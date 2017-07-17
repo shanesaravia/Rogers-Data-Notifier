@@ -42,4 +42,4 @@ Follow these instructions to have Windows Task Scheduler setup to run this scrip
 'toNumber' : '6471231234'
 ```
 ## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/shanesaravia/Rogers-Data-Notifier/blob/master/LICENSE) file for details
