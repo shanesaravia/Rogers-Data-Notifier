@@ -51,7 +51,7 @@ class CheckData(Configs):
 	def getDataRemaining(self, soup):
 		"""GET VALUE OF DATA USED"""
 		spans = soup.find_all('span', attrs={'class':'ute-dataManager-usageDialContent-gbAmount'})
-		time.sleep(1)
+		time.sleep(2)
 		dataRemaining = float(spans[0].text.strip(' GB'))
 		return dataRemaining
 
