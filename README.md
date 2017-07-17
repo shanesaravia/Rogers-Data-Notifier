@@ -41,3 +41,5 @@ Follow these instructions to have Windows Task Scheduler setup to run this scrip
 'fromNumber' : '4161231234'
 'toNumber' : '6471231234'
 ```
+## License
+This project is licensed under the MIT License - see the LICENSE.md file for details
