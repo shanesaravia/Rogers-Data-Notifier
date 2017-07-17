@@ -41,5 +41,8 @@ Follow these instructions to have Windows Task Scheduler setup to run this scrip
 'fromNumber' : '4161231234'
 'toNumber' : '6471231234'
 ```
+## Author
+**Shane Saravia**
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/shanesaravia/Rogers-Data-Notifier/blob/master/LICENSE) file for details
