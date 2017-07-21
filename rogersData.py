@@ -50,9 +50,14 @@ class CheckData(Configs):
 
 	def getDataRemaining(self, soup):
 		"""GET VALUE OF DATA USED"""
-		spans = soup.find_all('span', attrs={'class':'ute-dataManager-usageDialContent-gbAmount'})
 		time.sleep(2)
-		dataRemaining = float(spans[0].text.strip(' GB'))
+		spans = soup.find_all('span', attrs={'class':'ute-dataManager-usageDialContent-gbAmount'})
+		if 'GB' in spans[0].text:
+			dataRemaining = float(spans[0].text.strip(' GB'))
+		elif 'MB' in spans[0].text:
+			dataRemaining = float(spans[0].text.strip(' MB'))
+		else:
+			print('Cannot retrieve rogers data. Please try again.')
 		return dataRemaining
 
 	def getDaysLeft(self, soup):
@@ -69,7 +74,13 @@ class CheckData(Configs):
 
 	def getAverageDay(self):
 		"""GET AVERAGE PER DAY (REMAINING DAYS)"""
-		return self.getDataRemaining(self.getHTML()) / self.getDaysLeft(self.getHTML()) * 1000
+		dataRemaining = self.getDataRemaining(self.getHTML())
+		daysLeft = self.getDaysLeft(self.getHTML())
+
+		if dataRemaining <= 20:
+			return str(round(dataRemaining / daysLeft, 1)) + ' GB'
+		else:
+			return str(round(dataRemaining / daysLeft, 1)) + ' MB'
 
 # SEND A TEXT WITH DATA REMAINING
 class SendSMS(CheckData):
@@ -93,6 +104,6 @@ class Main(SendSMS):
 		html = dataChecker.getHTML()
 		dataRemaining = dataChecker.getDataRemaining(html)
 		sendSMS = SendSMS(config['twilio-accountSID'], config['twilio-authToken'])
-		sendSMS.sendMessage(config['fromNumber'], config['toNumber'], 'You have {} GB left out of {} GB. You have {} days left until it resets. This leaves you {} MB per day'.format(dataChecker.getDataRemaining(html), dataChecker.getTotalData(html), dataChecker.getDaysLeft(html), dataChecker.getAverageDay()))
+		sendSMS.sendMessage(config['fromNumber'], config['toNumber'], 'You have {} GB left out of {} GB. You have {} days left until it resets. This leaves you {} per day.'.format(dataChecker.getDataRemaining(html), dataChecker.getTotalData(html), dataChecker.getDaysLeft(html), dataChecker.getAverageDay()))
 
 Main.run()
