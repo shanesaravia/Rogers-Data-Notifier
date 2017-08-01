@@ -106,4 +106,5 @@ class Main(SendSMS):
 		sendSMS = SendSMS(config['twilio-accountSID'], config['twilio-authToken'])
 		sendSMS.sendMessage(config['fromNumber'], config['toNumber'], 'You have {} GB left out of {} GB. You have {} days left until it resets. This leaves you {} per day.'.format(dataChecker.getDataRemaining(html), dataChecker.getTotalData(html), dataChecker.getDaysLeft(html), dataChecker.getAverageDay()))
 
-Main.run()
+if __name__ == '__main__':
+	Main.run()
