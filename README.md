@@ -15,7 +15,7 @@ Following these instructions will get the code up and running on your local mach
 [Selenium 3.0.2](http://www.seleniumhq.org/)  
 [Yaml 3.12](http://www.yaml.org/start.html)  
 [Twilio 6.4.2](https://www.twilio.com/docs/libraries/python)  
-[BeautifulSoup4 4.6.0](https://pypi.python.org/pypi/beautifulsoup4)
+[Beautiful Soup 4.6.0](https://pypi.python.org/pypi/beautifulsoup4)
 
 ## Setting Up Twilio
 Follow these instructions to retrieve your Twilio Account SID, Twilio AuthToken, and Twilio Phone Number. (This information is needed for the config file)
